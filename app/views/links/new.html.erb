@@ -1,0 +1,36 @@
+
+<h3> Form to Post your Fav  Title and Link </h3>
+
+
+<%= form_for (@link) do |f| %>
+		
+		<% if @link.errors.any? %>
+			<div id="error_explanation">
+			<h2><%= pluralize(@link.errors.count, "error") %> Prohibted from Saving this Link from being Saved </h2>
+			<ul>
+				<%= @link.errors.full_messages.each do |msg| %>
+
+				<li> <%= msg %></li>
+				<% end %>
+			</ul>
+			</div>
+		<% end %>
+
+<%= f.hidden_field :user_id %> 
+
+<div class="field">
+	<br /><br />
+	<%= f.label :title %> : 
+	<%= f.text_field :title %> <br /><br />
+</div>
+
+<div class="field">
+	<%= f.label :url %> : 
+	<%= f.text_field :url %><br />
+</div>
+
+<div class="actions"> <br /><br />
+	<%= f.submit %>
+</div>	
+
+<% end %>
